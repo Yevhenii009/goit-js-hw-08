@@ -18,16 +18,16 @@ function formValues() {
   try {
     savedMessage = JSON.parse(savedMessage);
   } catch (er) {
-    console.log(er.email);
-    console.log(er.message);
+    console.log(er.addEmail);
+    console.log(er.addMessage);
   }
 
   if (savedMessage) {
-    if (savedMessage.email) {
+    if (savedMessage.addEmail) {
       addEmail.value = savedMessage.addEmail;
       formData.addEmail = savedMessage.addEmail;
     }
-    if (savedMessage.message) {
+    if (savedMessage.addMessage) {
       addMessage.value = savedMessage.addMessage;
       formData.addMessage = savedMessage.addMessage;
     }
