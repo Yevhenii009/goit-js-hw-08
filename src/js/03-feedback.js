@@ -14,13 +14,6 @@ formValues();
 function formValues() {
   let newForm = localStorage.getItem(STORAGE_KEY);
 
-  // try {
-  //   newForm = JSON.parse(newForm);
-  // } catch (error) {
-  //   console.log(error.name);
-  //   console.log(error.message);
-  // }
-
   if (newForm) {
     if (savedMessage.email) {
       email.value = newForm.email;
