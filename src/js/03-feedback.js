@@ -12,23 +12,23 @@ let formData = {};
 formValues();
 
 function formValues() {
-  let savedMessage = localStorage.getItem(STORAGE_KEY);
+  let newForm = localStorage.getItem(STORAGE_KEY);
 
-  try {
-    savedMessage = JSON.parse(savedMessage);
-  } catch (error) {
-    console.log(error.name);
-    console.log(error.message);
-  }
+  // try {
+  //   newForm = JSON.parse(newForm);
+  // } catch (error) {
+  //   console.log(error.name);
+  //   console.log(error.message);
+  // }
 
-  if (savedMessage) {
+  if (newForm) {
     if (savedMessage.email) {
-      email.value = savedMessage.email;
-      formData.email = savedMessage.email;
+      email.value = newForm.email;
+      formData.email = newForm.email;
     }
-    if (savedMessage.message) {
-      message.value = savedMessage.message;
-      formData.message = savedMessage.message;
+    if (newForm.message) {
+      message.value = newForm.message;
+      formData.message = newForm.message;
     }
   }
 }
