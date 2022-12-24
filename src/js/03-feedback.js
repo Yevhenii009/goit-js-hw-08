@@ -14,6 +14,13 @@ formValues();
 function formValues() {
   let newForm = localStorage.getItem(STORAGE_KEY);
 
+try {
+    savedMessage = JSON.parse(savedMessage);
+  } catch (e) {
+    console.log(e.name);
+    console.log(e.message);
+  }
+
   if (newForm) {
     if (savedMessage.email) {
       email.value = newForm.email;
@@ -26,16 +33,16 @@ function formValues() {
   }
 }
 
-function onFormSubmit(evt) {
-  evt.preventDefault();
+function onFormSubmit(event) {
+  event.preventDefault();
   console.log(formData);
-  evt.currentTarget.reset();
+  event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
   formData = {};
 }
 
-function onFormInput(evt) {
-  formData[evt.target.name] = evt.target.value;
+function onFormInput(event) {
+  formData[event.target.name] = event.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
