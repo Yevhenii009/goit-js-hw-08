@@ -6,7 +6,7 @@ const addEmail = document.querySelector('.feedback-form input');
 const addMessage = document.querySelector('.feedback-form textarea');
 
 addForm.addEventListener('submit', onAddForm);
-addForm.addEventListener('input', throttle(onAddFormInput, 500));
+addForm.addEventListener('input', throttle(onFormInput, 500));
 
 let formData = {};
 
@@ -34,7 +34,7 @@ function formValues() {
   }
 }
 
-function onAddForm(event) {
+function onFormInput(event) {
   formData[event.target.name] = event.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
