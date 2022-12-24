@@ -8,7 +8,7 @@ const addMessage = document.querySelector('.feedback-form textarea');
 addForm.addEventListener('submit', onAddForm);
 addForm.addEventListener('input', throttle(onAddFormInput, 500));
 
-let formData = {};
+let formData = [];
 
 formValues();
 
