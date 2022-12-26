@@ -33,6 +33,11 @@ try {
   }
 }
 
+function onFormInput(event) {
+  formData[event.target.name] = event.target.value;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+}
+
 function onFormSubmit(event) {
   event.preventDefault();
   console.log(formData);
@@ -40,12 +45,6 @@ function onFormSubmit(event) {
   localStorage.removeItem(STORAGE_KEY);
   formData = {};
 }
-
-function onFormInput(event) {
-  formData[event.target.name] = event.target.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-}
-
 
 
 
