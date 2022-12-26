@@ -8,26 +8,26 @@ form.addEventListener('input', throttle(onFormInput, 500));
 
 formValues();
 
-function onFormSubmit(evt) {
-  evt.preventDefault();
+function onFormSubmit(event) {
+  event.preventDefault();
   const formData = new FormData(form);
   formData.forEach((value, name) => console.log(value, name));
-  evt.currentTarget.reset();
+  event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
 
-function onFormInput(evt) {
-  let persistedFilters = localStorage.getItem(STORAGE_KEY);
-  persistedFilters = persistedFilters ? JSON.parse(persistedFilters) : {};
-  persistedFilters[evt.target.name] = evt.target.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(persistedFilters));
+function onFormInput(event) {
+  let newForm = localStorage.getItem(STORAGE_KEY);
+  newForm = newForm ? JSON.parse(newForm) : {};
+  newForm[event.target.name] = event.target.value;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(newForm));
 }
 
 function formValues() {
-  let persistedFilters = localStorage.getItem(STORAGE_KEY);
-  if (persistedFilters) {
-    persistedFilters = JSON.parse(persistedFilters);
-    Object.entries(persistedFilters).forEach(([name, value]) => {
+  let newForm = localStorage.getItem(STORAGE_KEY);
+  if (newForm) {
+    newForm = JSON.parse(newForm);
+    Object.entries(newForm).forEach(([name, value]) => {
       form.elements[name].value = value;
     });
   }
